@@ -7,7 +7,7 @@ public class JuegoDeCartas {
     }
 
     public static void menu(){
-        Scanner.scanner = new scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int opcion;
         do{
             System.out.println("Menu principal");
@@ -17,7 +17,7 @@ public class JuegoDeCartas {
 
             opcion = scanner.nextInt();
 
-            switch(opcion) {
+            switch (opcion) {
                 case 1: 
                     jugar();
                     break;
