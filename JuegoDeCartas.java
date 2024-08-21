@@ -51,7 +51,7 @@ public class JuegoDeCartas {
         }
     }
 
-    public static int obtenerCartas(String matrizCartas[][]) {
+    public static int obtenerCarta(String matrizCartas[][]) {
         Random random = new Random();
         int palo = random.nextInt(4);
         int valor = random.nextInt(12);
@@ -69,6 +69,42 @@ public class JuegoDeCartas {
         Scanner scanner = new Scanner(System.in);
         int puntajeJugador1 = 0;
         int puntajeJugador2 = 0;
+
+        System.out.println("Turno del Jugador 1");
+        for (int i = 0; i < 3; i++) {
+            puntajeJugador1 += obtenerCarta(matrizCartas);
+            System.out.println("Puntaje total del Jugador 1: " + puntajeJugador1);
+            if (puntajeJugador1 > 20) {
+                System.out.println("¡Jugador 1 se ha pasado de 20 puntos!");
+                break;
+            }   
+        }
         
+        System.out.println("Turno del Jugador 2");
+        for (int i = 0; i < 3; i++) {
+            puntajeJugador2 += obtenerCarta(matrizCartas);
+            System.out.println("Puntaje total del Jugador 2: " + puntajeJugador1);
+            if (puntajeJugador2 > 20) {
+                System.out.println("¡Jugador 2 se ha pasado de 20 puntos!");
+                break;
+            }   
+        }
+
+        if (puntajeJugador1 == 20) {
+            System.out.println("Jugador 1 gana con  20 puntos!");
+        } else if (puntajeJugador2 == 20) {
+            System.out.println("Jugador 2 gana con puntos!");
+        } else if (puntajeJugador1 > 20 && puntajeJugador2 > 20) {
+            System.out.println("Ambos jugadores se pasaron de 20 puntos. No hay ganador.");
+        } else if (puntajeJugador1 <= 20 && (puntajeJugador2 > 20 || puntajeJugador1 > puntajeJugador2)) {
+            System.out.println("Jugador 1 gana por estar más cerca de 20 puntos!");
+        } else if (puntajeJugador2 <= 20 && (puntajeJugador1 > 20 || puntajeJugador2 > puntajeJugador1)) {
+            System.out.println("Jugador 2 gana por estar más cerca de 20 puntos!");
+        } else {
+            System.out.println("Empate.");
+        }
+    }
+    public static void salir() {
+        System.out.println("Gracias por jugar. ¡Hasta pronto!");
     }
 }
